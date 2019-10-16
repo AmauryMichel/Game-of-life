@@ -1,0 +1,35 @@
+1 = section
+9 = nombre de lignes à lire
+Vous pouvez changer ici les parametres du jeu de la vie comme vous le souhaitez.
+ 
+Le nombre de lignes et de colonnes change les dimensions de la grille.
+ 
+Les valeurs de naissance et de mort changent les conditions de naissance et de mort des cellules.
+ 
+Le bouton "Changer l'etat initial" vous permet de changer l'etat des cellules avant de lancer la partie.
+ 
+Le bouton "Lancer la partie" permet de demarrer ou de reprendre la partie.
+ 
+2
+9
+Vous pouvez changer ici l'etat des cellules avant de lancer la partie.
+ 
+En cliquant sur une cellule morte (case blanche), cela la fait naitre  et en cliquant sur une cellule vivante (case noire), cela la fait mourir.
+ 
+Le bouton "Reinitialiser" remet toutes les cellules a l'etat mort.
+ 
+Le bouton "Confirmer" retourne au menu principal.
+ 
+Attention : Si la classe moteur utilisee n'est pas la classe moteur originale, l'etat initial sera perdu si un redimensionnemant de la grille est fait.
+ 
+3
+9
+Voice le menu du jeu de la vie en pleine partie.
+ 
+En cliquant sur une cellule morte (case blanche), cela la fait naitre  et en cliquant sur une cellule vivante (case noire), cela la fait mourir.
+ 
+Le bouton "Pause/Play" vous permet de mettre en pause ou de reprendre le jeu comme vous le souhaitez. Le texte du bouton change en fonction de l'etat du jeu.
+ 
+Le trackbar vous permet de changer le temps entre chaque mise a jour du jeu.
+ 
+Le bouton "Retour" vous ramene au menu principal tout en gardant votre progres, vous permettant ainsi de changer certaines parametres.

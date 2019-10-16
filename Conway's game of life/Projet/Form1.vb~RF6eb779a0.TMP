@@ -1,0 +1,80 @@
+﻿Public Class Form1
+
+    Dim lblTitre As Label
+    Dim lblNbLignes As Label
+    Dim lblNbColonnes As Label
+    Dim cbLignes As ComboBox
+    Dim cbColonnes As ComboBox
+    Dim lblEtatInitial As Label
+    Dim tlpInitial As TableLayoutPanel
+
+    Private Sub MenuPrincipal()
+        Dim lblTitre As New Label With {
+            .Size = New Point(235, 50),
+            .Text = "Jeu de la vie",
+            .Font = New System.Drawing.Font("Berlin Sans FB", 30, System.Drawing.FontStyle.Underline),
+            .Anchor = AnchorStyles.Left And AnchorStyles.Top
+        }
+        lblTitre.Location = New Point((MyBase.Width - lblTitre.Width) / 2, 50)
+
+        MyBase.Controls.Add(lblTitre)
+
+        lblNbLignes = New Label With {
+            .Text = "Nombre de lignes",
+            .Size = New Point(155, 30),
+        .Font = New System.Drawing.Font("Berlin Sans FB", 15, System.Drawing.FontStyle.Regular),
+        .Anchor = AnchorStyles.Left And AnchorStyles.Top
+        }
+        lblNbLignes.Location = New Point((MyBase.Width / 2 - lblNbLignes.Width) / 2, lblTitre.Bottom + 50)
+        MyBase.Controls.Add(lblNbLignes)
+
+        lblNbColonnes = New Label
+        lblNbColonnes.Text = "Nombre de colonnes"
+        lblNbColonnes.Size = New Point(180, 30)
+        lblNbColonnes.Font = lblNbLignes.Font
+        lblNbColonnes.Location = New Point((MyBase.Width / 2 - lblNbColonnes.Width) / 2 + MyBase.Width / 2, lblTitre.Bottom + 50)
+        lblNbColonnes.Anchor = AnchorStyles.Left And AnchorStyles.Top
+        MyBase.Controls.Add(lblNbColonnes)
+
+        cbLignes = New ComboBox
+        cbColonnes = New ComboBox
+        For cpt As Integer = 1 To 10
+            cbLignes.Items.Add(cpt)
+            cbColonnes.Items.Add(cpt)
+        Next
+        cbLignes.Size = New Size(40, 10)
+        cbColonnes.Size = New Size(40, 10)
+        cbLignes.Location = New Point((MyBase.Width / 2 - cbLignes.Width) / 2, lblNbLignes.Bottom + 10)
+        cbColonnes.Location = New Point(cbLignes.Left + MyBase.Width / 2, lblNbLignes.Bottom + 10)
+        cbColonnes.Anchor = AnchorStyles.Left And AnchorStyles.Top
+        cbLignes.Anchor = AnchorStyles.Left And AnchorStyles.Top
+        cbLignes.SelectedIndex = 0
+        cbColonnes.SelectedIndex = 0
+        MyBase.Controls.Add(cbLignes)
+        MyBase.Controls.Add(cbColonnes)
+        AddHandler cbLignes.SelectedIndexChanged, AddressOf previewChange
+        AddHandler cbColonnes.SelectedValueChanged, AddressOf previewChange
+
+        lblEtatInitial = New Label
+        lblEtatInitial.Text = "Etat initial"
+        lblEtatInitial.Size = New Point(100, 30)
+        lblEtatInitial.Font = lblNbLignes.Font
+        lblEtatInitial.Location = New Point((MyBase.Width - lblEtatInitial.Width) / 2, cbColonnes.Bottom + 30)
+        MyBase.Controls.Add(lblEtatInitial)
+
+        tlpInitial = New TableLayoutPanel
+        tlpInitial.Size = New Point(200, 200)
+        tlpInitial.Location = New Point((MyBase.Width - tlpInitial.Width) / 2, lblEtatInitial.Bottom + 10)
+        tlpInitial.BorderStyle = BorderStyle.FixedSingle
+        MyBase.Controls.Add(tlpInitial)
+    End Sub
+
+    Private Sub previewChange(sender As Object, e As EventArgs)
+        tlpInitial.ColumnCount = cbColonnes.SelectedIndex
+        tlpInitial.RowCount = cbLignes.SelectedItem
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MenuPrincipal()
+    End Sub
+End Class
